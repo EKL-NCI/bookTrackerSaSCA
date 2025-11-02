@@ -7,10 +7,10 @@ class Album < ApplicationRecord
 
   before_validation :set_default_availability, on: :create
 
-    private
-    def set_default_availability
+  private
+  def set_default_availability
       self.availability = true if availability.nil?
-    end
+  end
 end
 
 
