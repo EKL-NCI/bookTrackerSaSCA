@@ -27,16 +27,16 @@ class AlbumsController < ApplicationController
 
     def update
         @album = Album.find(album_params[:id])
-        if @album.update(post_album_params)
-            redirect_to @post, notice: "Album was successfully updated"
+        if @album.update(album_params)
+            redirect_to @album, notice: "Album was successfully updated"
         else
             render :edit
         end
     end
 
-    def delete
+    def destroy
         @album = Album.find(album_params[:id])
-        @album.delete
-        redirect_to posts_url, notice: "Album was successfully deleted"
+        @album.destroy
+        redirect_to albums_url, notice: "Album was successfully deleted"
     end
 end
