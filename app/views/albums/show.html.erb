@@ -1,0 +1,9 @@
+<h1><% @album.title %></h1>
+<p>Artist: <% @album.artist %></p>
+<p>Release Year: <% @album.release_year %></p>
+<p>Genre: <% @album.genre %></p>
+<p>Rating: <% @album.rating %></p>
+<p>Available: <% @album.availability %></p>
+
+<%= link_to "Edit", edit_album_path(@album) %>
+<%= link_to "Back", albums_path %>

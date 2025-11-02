@@ -1,0 +1,31 @@
+<h1>New Album</h1>
+
+<%= form_with model: @album, local: true do |form| %>
+    <div>
+        <%= form.label :title %>
+        <%= form.text_field :title %>
+    </div>
+    <div>
+        <%= form.label :artist %>
+        <%= form.text_field :artist %>
+    </div>
+    <div>
+        <%= form.label :release_year %>
+        <%= form.number_field :release_year %>
+    </div>
+    <div>
+        <%= form.label :genre %>
+        <%= form.text_field :genre %>
+    </div>
+    <div>
+        <%= form.label :rating %>
+        <%= form.number_field :rating %>
+    </div>
+    <div>
+        <%= form.label :availability %>
+        <%= form.check_box :availability %>
+    </div>
+    <div>
+        <%= form.submit "Add Album" %>
+    </div>
+<% end %>

@@ -1,7 +1,8 @@
 class AlbumsController < ApplicationController
+    before_action :set_album, only: %i[show edit update destroy]
 
     def index
-        @album = Album.all
+        @albums = Album.all
     end
 
     def new
@@ -18,15 +19,12 @@ class AlbumsController < ApplicationController
     end
 
     def show
-        @album = Album.find(album_params[:id])
     end
 
     def edit
-        @album = Album.find(album_params[:id])
     end
 
     def update
-        @album = Album.find(album_params[:id])
         if @album.update(album_params)
             redirect_to @album, notice: "Album was successfully updated"
         else
@@ -35,8 +33,16 @@ class AlbumsController < ApplicationController
     end
 
     def destroy
-        @album = Album.find(album_params[:id])
         @album.destroy
         redirect_to albums_url, notice: "Album was successfully deleted"
+    end
+
+    private
+    def set_album
+        @album = Album.find(params[:id])
+    end
+
+    def album_params
+        params.require(:album).permit(:title, :artist, :release_year, :genre, :rating, :availability)
     end
 end
